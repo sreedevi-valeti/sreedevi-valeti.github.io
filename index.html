@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sreedevi Valeti — Cloud Engineer</title>
+  <meta name="description" content="Sreedevi Valeti — Cloud Engineer with 4.5+ years of experience in AWS, Terraform, CloudFormation, and CI/CD automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg-soft: #161b22;
+      --card: #1c2230;
+      --text: #e6edf3;
+      --muted: #9aa7b4;
+      --accent: #ff9900;
+      --accent-2: #569aff;
+      --border: #2a3140;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+    .accent { color: var(--accent); }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(13,17,23,.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+    .logo { font-weight: 800; font-size: 1.05rem; letter-spacing: .3px; }
+    .nav-links { display: flex; gap: 26px; }
+    .nav-links a { color: var(--muted); font-size: .92rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* Hero */
+    header.hero { padding: 90px 0 70px; text-align: center; }
+    .avatar {
+      width: 132px; height: 132px; border-radius: 50%;
+      margin: 0 auto 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; font-weight: 800; color: #0d1117;
+      background: linear-gradient(135deg, var(--accent), #ffce6b);
+      box-shadow: 0 12px 40px rgba(255,153,0,.25);
+    }
+    header.hero h1 { font-size: clamp(2.1rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -.5px; }
+    .role { font-family: 'Fira Code', monospace; color: var(--accent); font-size: 1.05rem; margin-top: 12px; }
+    .tagline { color: var(--muted); max-width: 620px; margin: 20px auto 0; font-size: 1.05rem; }
+    .cta { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 26px; border-radius: 8px; font-weight: 600; font-size: .95rem;
+      transition: transform .15s, box-shadow .2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary { background: var(--accent); color: #0d1117; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,153,0,.35); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Sections */
+    section { padding: 62px 0; border-top: 1px solid var(--border); }
+    .section-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 8px; }
+    .section-title::before { content: "# "; color: var(--accent); }
+    .section-sub { color: var(--muted); margin-bottom: 34px; }
+
+    .about p { color: #c9d3de; font-size: 1.05rem; max-width: 760px; }
+    .about ul { list-style: none; margin-top: 22px; display: grid; gap: 12px; }
+    .about li { padding-left: 28px; position: relative; color: #c9d3de; }
+    .about li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+
+    /* Skills */
+    .skill-group { margin-bottom: 26px; }
+    .skill-group h3 { font-size: 1.05rem; margin-bottom: 14px; color: var(--accent-2); }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 7px 15px; border-radius: 20px; font-size: .86rem; font-weight: 500;
+      transition: border-color .2s, transform .15s;
+    }
+    .chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    /* Certs */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 16px; }
+    .cert {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px;
+      transition: border-color .2s, transform .15s;
+    }
+    .cert:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .cert .badge { font-size: 1.4rem; }
+    .cert h4 { margin: 10px 0 4px; font-size: 1.02rem; }
+    .cert span { color: var(--muted); font-size: .85rem; }
+
+    /* Projects */
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 18px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+      transition: border-color .2s, transform .15s; display: flex; flex-direction: column;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .card h4 { font-size: 1.12rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .94rem; flex: 1; }
+    .card .stack { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .card .stack span { font-size: .74rem; color: var(--accent); background: rgba(255,153,0,.1); padding: 3px 9px; border-radius: 5px; }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 28px; }
+    .socials { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    footer { text-align: center; padding: 34px 0; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <span class="logo">Sreedevi<span class="accent">.</span></span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="avatar">SV</div>
+      <h1>Sreedevi Valeti</h1>
+      <div class="role">Cloud Engineer · 4.5+ Years Experience</div>
+      <p class="tagline">Designing, automating, and operating reliable cloud infrastructure on AWS with Infrastructure as Code and CI/CD.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="https://github.com/sreedevi-valeti" target="_blank" rel="noopener">View GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p>I'm a <strong>Cloud Engineer</strong> with <strong>4.5+ years of experience</strong> building and automating reliable cloud infrastructure on AWS. I focus on turning manual, error-prone operations into clean, automated, version-controlled workflows.</p>
+      <ul>
+        <li>Designing and operating Infrastructure as Code with CloudFormation and Terraform — including drift detection and IaC governance</li>
+        <li>Building robust CI/CD pipelines with GitHub Actions and AWS CodePipeline</li>
+        <li>Architecting scalable, secure, and cost-efficient systems on AWS</li>
+        <li>AWS &amp; Microsoft certified, continuously deepening cloud architecture expertise</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Tech Stack</h2>
+      <p class="section-sub">Tools and services I work with day to day.</p>
+
+      <div class="skill-group">
+        <h3>☁️ AWS (Primary Expertise)</h3>
+        <div class="chips">
+          <span class="chip">EC2</span><span class="chip">S3</span><span class="chip">EFS</span>
+          <span class="chip">VPC</span><span class="chip">IAM</span><span class="chip">Secrets Manager</span>
+          <span class="chip">Lambda</span><span class="chip">Step Functions</span><span class="chip">EventBridge</span>
+          <span class="chip">CloudFormation</span><span class="chip">Systems Manager</span><span class="chip">Patch Manager</span>
+          <span class="chip">Config</span><span class="chip">CloudWatch</span><span class="chip">RDS</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>🏗️ Infrastructure as Code</h3>
+        <div class="chips">
+          <span class="chip">Terraform</span><span class="chip">CloudFormation</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>⚙️ CI/CD &amp; Automation</h3>
+        <div class="chips">
+          <span class="chip">GitHub Actions</span><span class="chip">AWS CodePipeline</span>
+          <span class="chip">Docker</span><span class="chip">Git</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>💻 Languages &amp; Tools</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">Bash</span>
+          <span class="chip">Linux</span><span class="chip">YAML</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-sub">Validated cloud and platform expertise.</p>
+      <div class="cert-grid">
+        <div class="cert">
+          <div class="badge">🟧</div>
+          <h4>AWS Solutions Architect – Associate</h4>
+          <span>Amazon Web Services (SAA)</span>
+        </div>
+        <div class="cert">
+          <div class="badge">🤖</div>
+          <h4>AWS AI Practitioner</h4>
+          <span>Amazon Web Services</span>
+        </div>
+        <div class="cert">
+          <div class="badge">🟦</div>
+          <h4>Microsoft 365 Fundamentals</h4>
+          <span>Microsoft (MS-900)</span>
+        </div>
+        <div class="cert">
+          <div class="badge">🧠</div>
+          <h4>Claude Certified Architect – Foundation</h4>
+          <span>Anthropic (CCA-F)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">Areas I build in. <em>(Replace with links to your real repositories.)</em></p>
+      <div class="proj-grid">
+        <div class="card">
+          <h4>IaC Drift Detection</h4>
+          <p>Detects and reports configuration drift between live AWS state and Terraform/CloudFormation definitions, with automated alerting.</p>
+          <div class="stack"><span>Terraform</span><span>AWS</span><span>Python</span></div>
+        </div>
+        <div class="card">
+          <h4>CI/CD Automation</h4>
+          <p>End-to-end deployment pipelines with automated testing, approvals, and rollbacks across multiple environments.</p>
+          <div class="stack"><span>GitHub Actions</span><span>CodePipeline</span></div>
+        </div>
+        <div class="card">
+          <h4>Cloud Governance</h4>
+          <p>Policy, tagging, and compliance automation across AWS accounts using Config rules and Lambda remediation.</p>
+          <div class="stack"><span>AWS Config</span><span>IAM</span><span>Lambda</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p>Open to connecting on cloud engineering, AWS, and infrastructure automation. Feel free to reach out.</p>
+      <div class="socials">
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/sreetech/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/sreedevi-valeti" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Sreedevi Valeti · Built with HTML &amp; CSS · Hosted on GitHub Pages
+  </footer>
+</body>
+</html>
