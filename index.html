@@ -129,6 +129,11 @@
     .card:hover .thumb img { transform: scale(1.04); }
     .card h4 { font-size: 1.12rem; margin-bottom: 10px; }
     .card p { color: var(--muted); font-size: .94rem; flex: 1; }
+    .card .note {
+      flex: none; margin-top: 14px; font-size: .82rem; color: #c9d3de;
+      background: rgba(86,154,255,.08); border-left: 2px solid var(--accent-2);
+      padding: 9px 12px; border-radius: 0 6px 6px 0;
+    }
     .card .stack { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 7px; }
     .card .stack span { font-size: .74rem; color: var(--accent); background: rgba(255,153,0,.1); padding: 3px 9px; border-radius: 5px; }
 
@@ -263,6 +268,7 @@
           <div class="thumb"><img src="assets/auto-alarms-workflow.png" alt="EC2 Auto-Alarms workflow: triggers, AWS Lambda decision logic, and outputs" loading="lazy" /></div>
           <h4>EC2 Lifecycle-Driven CloudWatch Auto-Alarms ↗</h4>
           <p>Auto-creates CloudWatch alarms (CPU, memory, per-filesystem disk, status checks) the moment an EC2 instance launches and deletes them all on termination — no upkeep, no orphans. Rolls 8–10 per-metric alarms into one <strong>composite alarm</strong> per instance with down-state suppression to kill alert floods. Works cross-OS: <strong>Windows + all Linux distributions</strong>. Event-driven, serverless, 100% Terraform.</p>
+          <p class="note">Note: status-check alarms are <strong>alert-only</strong> — auto-remediation (auto-recover / reboot) is intentionally skipped so failures are surfaced to a human rather than silently masked.</p>
           <div class="stack"><span>Terraform</span><span>AWS Lambda</span><span>EventBridge</span><span>CloudWatch Composite Alarms</span><span>SNS</span><span>Systems Manager</span></div>
         </a>
         <a class="card" href="https://github.com/sreedevi-valeti/ec2-alert-enrichment" target="_blank" rel="noopener">
